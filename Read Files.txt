@@ -1,0 +1,55 @@
+#Reading Excel Data Files (XLSX or XLS):
+install.packages(“readxl”) > library(readxl) > dataEXCEL <- read_excel(“survey.xlsx”, sheet = 1) > dataEXCEL <- read_excel(“survey.xlsx”, sheet = “sheetname”)
+
+This creates an R tibble (the newer version of an R dataframe). If you are more comfortable with R dataframes, please use:
+
+> dfEXCEL <- as.data.frame(dataEXCEL)
+
+#Reading Delimited Data Files:
+
+Space-Delimited
+
+Function: read.table()
+
+Common Parameters:
+
+Header: TRUE when first row includes variable names. The default is FALSE.
+Sep: A string indicating what is separating the data. The default is "  ".
+> dataSPACE <-read.table("C:/mydata/survey.dat", header=TRUE, sep= " ")
+ 
+
+With the working directory set, this is equivalent to:
+
+> dataSPACE <-read.table("survey.dat", header=TRUE, sep= " ")
+ 
+
+Tab-Delimited
+
+Functions: read.table()
+
+Common Parameters:
+
+Header: TRUE when first row includes variable names. The default is FALSE.
+Sep: A string indicating what is separating the data. The default is "  ".
+> dataTAB <-read.table("survey.dat", header=TRUE, sep= "\t")
+ 
+
+Comma-Delimited
+
+Function: read.csv()
+
+Common Parameters:
+
+Header: TRUE when first row includes variable names. The default is FALSE.
+> dataCOMMA <-read.csv("survey.csv", header=TRUE)
+ 
+
+Fixed-Width Formats
+
+Function: read.fwf()
+
+Common Parameters:
+
+Header: TRUE when first row includes variable names. The default is FALSE.
+> dataFW <-read.fwf("survey.txt", header=TRUE)
+ 
