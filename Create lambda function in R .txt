@@ -1,0 +1,8 @@
+#The lambdaR package is created to provide lambda expressions into R.
+
+By using this package, you can use Python-like lambda expressions in R.
+
+library(lambdaR)
+
+Filter (1:10, x: x %% 2 == e)
+
