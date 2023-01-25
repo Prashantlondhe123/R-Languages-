@@ -1,3 +1,28 @@
+### load the tidyr package 
+
+library(tidyr) 
+
+# creating a data frame
+tidy_dataframe = data.frame( 
+
+                      S.No = c(1:n),  
+
+                    Group.1 = c(23, 345, 76, 212, 88,  
+
+                                199, 72, 35, 90, 265), 
+
+                    Group.2 = c(117, 89, 66, 334, 90,  
+
+                               101, 178, 233, 45, 200), 
+
+                    Group.3 = c(29, 101, 239, 289, 176, 
+
+                                320, 89, 109, 199, 56)) 
+
+  
+# print the elements of the data frame 
+tidy_dataframe 
+
 #dplyr Package in R Programming:
 -The dplyr package in R Programming Language is a structure of data manipulation that provides a uniform set of verbs, helping to resolve the most frequent data manipulation hurdles
 
@@ -179,7 +204,91 @@ anti_join(gfg1,gfg2, by = "ID")
 # Using case_when() to create new variable
 data_frame % > % mutate(Price_status=case_when(Price >= 500000 & Price <= 900000 ~ "Average", Price > 900000 ~ "High", TRUE ~ "Low"))
 
-#
+##Using switch statement in R:
+# Case_when() to create new variable
+data_frame$Vehicle_Type <- sapply(data_frame$Brand, switch, "Tata Motors"='Car', 
+                                  "Mahindra"='Car', "Maruti Suzuki" = 'Car')
+data_frame
+
+##cumall(), cumany() & cummean() R Functions of dplyr Package:
+
+
+##Data Manipulation in R with Dplyr Package:
+# fetch players who scored more
+# than 100 runs
+filter(stats, runs>100)
+
+## removes duplicate rows
+distinct(stats)
+ 
+#remove duplicates based on a column
+distinct(stats, player, .keep_all = TRUE)
+
+## Sorting:
+# ordered data based on runs
+arrange(stats, runs)
+
+## select specific col:
+# fetch required column data
+select(stats, player,wickets)
+
+## Rename the col:
+# renaming the column
+rename(stats, runs_scored=runs)
+
+## Create new col using existing col:
+# add new column avg
+mutate(stats, avg=runs/4)
+ 
+# drop all and create a new column
+transmute(stats, avg=runs/4)
+
+##summarize method
+summarize(stats, sum(runs), mean(runs))
+# summarize method
+summarize(stats, sum(runs), mean(runs))
+
+##Group by one or more variables using Dplyr in :
+ 
+# computing difference of each group
+data_frame%>%group_by(col1,col2)
+
+### rearrange the columns in alphabetic 
+# order
+data %>% select(order(colnames(data)))
+
+### arrange the rows based on salary
+# column in descending order
+data %>% arrange(desc(salary))
+
+## Intersection:
+# intersect both dataframes
+print(intersect(data1,data2))
+  
+# intersect on multiple  dataframes
+print(intersect(data1,data2,data3))
+
+## Get difference in dataframe
+# set difference of second dataframe
+# and first dataframe
+print(setdiff(data2,data1))
+
+#############################################################tidyr Package in R Programming
+Packages in the R language are a collection of R functions, compiled code, and sample data. They are stored under a directory called “library” in the R environment. By default, R installs a set of packages during installation.  One of the most important packages in R is the tidyr package. The sole purpose of the tidyr package is to simplify the process of creating tidy data. Tidy data describes a standard way of storing data that is used wherever possible throughout the tidyverse. If you once make sure that your data is tidy, you’ll spend less time punching with the tools and more time working on your analysis
+
+#install.packages("tidyr")
+library(tidyr)
+
+##############  Lubridate library - Datatime ########
+-Lubridate is an R package that makes it easier to work with dates and times. Below is a concise tour of some of the things lubridate can do for you. Lubridate was created by Garrett Grolemund and Hadley Wickham, and is now maintained by Vitalie Spinu
+
+The easiest way to get lubridate is to install the whole tidyverse:
+install.packages("tidyverse")
+
+# Alternatively, install just lubridate:
+install.packages("lubridate")
+
+
 
 
 
