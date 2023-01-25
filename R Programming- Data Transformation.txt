@@ -1,0 +1,186 @@
+#dplyr Package in R Programming:
+-The dplyr package in R Programming Language is a structure of data manipulation that provides a uniform set of verbs, helping to resolve the most frequent data manipulation hurdles
+
+install.packages("dplyr")
+# load the library
+library(dplyr)
+
+# Finding rows with NA value
+d % > % filter(is.na(ht))
+ 
+# Finding rows with no NA value
+d % > % filter(! is.na(ht)) - ht is col 
+
+ 
+# Arranging name according to the age
+d.name<- arrange(d, age)
+print(d.name)
+
+## startswith() function to print only ht data
+
+select(d, starts_with("ht"))
+ 
+# -startswith() function to print
+# everything except ht data
+
+select(d, -starts_with("ht"))
+ 
+# Printing column 1 to 2
+
+select(d, 1: 2)
+ 
+# Printing data of column
+# heading containing 'a'
+
+select(d, contains("a"))
+ 
+# Printing data of column
+# heading which matches 'na'
+
+select(d, matches("na"))
+
+
+##mutate() and transmute(): Addition of new variables which are the functions of prevailing variables.
+# Calculating a variable x3 which is sum of height
+# and age printing with ht and age
+
+mutate(d, x3 = ht + age) 
+ 
+# Calculating a variable x3 which is sum of height 
+# and age printing without ht and age
+
+transmute(d, x3 = ht + age)
+
+##summarise(): Condensing various values to one value.
+# Calculating mean of age
+
+summarise(d, mean = mean(age))
+ 
+# Calculating min of age
+
+summarise(d, med = min(age))
+ 
+# Calculating max of age
+
+summarise(d, med = max(age))
+ 
+# Calculating median of age
+
+summarise(d, med = median(age))
+
+##sample_n() and sample_frac(): For taking random specimens.
+# Printing three rows
+
+sample_n(d, 3)
+ 
+# Printing 50 % of the rows
+
+sample_frac(d, 0.50)
+
+
+##Union() & union_all() functions in Dplyr package in R
+# union of the two dataframes
+print(union(data1,data2))
+
+# union_all of the two dataframes
+print(union_all(data1,data2))
+
+##How to Remove a Column using Dplyr package in R
+# remove id and name
+print(select(data1,-c(name,id)))
+
+# remove id 
+print(select(data1,-id))
+  
+# remove multiple columns- name,id
+print(select(data1,-c(name,id)))
+
+##Remove column which contains a value or matches a pattern
+
+# remove column that contains na
+print(select(data1,-contains('na')))
+      
+# remove column that contains re
+print(select(data1,-contains('re')))
+
+##Remove column which starts with or ends with certain character
+# remove column that starts with na
+print(select(data1,-starts_with('na')))
+      
+# remove column that starts with ad
+print(select(data1,-starts_with('ad')))
+
+# remove column that ends with d
+print(select(data1,-ends_with('d')))
+      
+# remove column that starts with ss
+print(select(data1,-ends_with('ss'))
+
+##Drop multiple columns using Dplyr package in R
+
+# remove all column
+print(select(data1,-c(address,name,id)))
+
+# remove name and id  columns by 
+# its position
+print(select(data1,-c(1,2)))
+
+### eliminating NA values
+data_without_na <- data_frame %>%                      
+  replace(is.na(.), 0) 
+print("Row Wise Sum")
+  
+data_mod <- data_without_na%>%
+  mutate(sum_of_rows = rowSums(.))
+print(data_mod)
+
+##Create, modify, and delete columns using dplyr package in R
+# adding new columns
+d <- mutate(d, Age=c(25, 28, 22, 27), Savings=Salary - Expenses)
+  
+print(d)
+  
+# adding a new column before FirstName
+d <- mutate(d, Title=c("Mr", "Mr", "Ms", "Ms"), .before=FirstName)
+print(d)
+  
+# adding a new column after FirstName
+d <- mutate(d, LastName=c("Singh", "Pande", "Sinha", "Roy"),
+             .after=FirstName)
+  
+print(d)
+
+## Modify FirstName, Salary  column
+d < - mutate(d, FirstName=c("Mahesh", "Jignesh", "Ria", "Tanya"),
+             Salary=c(60000, 30000, 50000, 75000))
+  
+print(d)
+
+### joins:
+# perform inner join
+inner_join(gfg1, gfg2, by="ID")
+
+#perform left join
+left_join(gfg1,gfg2, by = "ID") 
+
+# perform right join
+right_join(gfg1,gfg2, by = "ID") 
+
+# perform full join
+full_join(gfg1,gfg2, by = "ID") 
+
+# perform semijoin
+semi_join(gfg1,gfg2, by = "ID")
+
+# perform anti join
+anti_join(gfg1,gfg2, by = "ID") 
+
+## Case in R Programming:
+# Using case_when() to create new variable
+data_frame % > % mutate(Price_status=case_when(Price >= 500000 & Price <= 900000 ~ "Average", Price > 900000 ~ "High", TRUE ~ "Low"))
+
+#
+
+
+
+
