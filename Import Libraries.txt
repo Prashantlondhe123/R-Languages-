@@ -1,1 +1,14 @@
-# library(readr)
+Step 1 : 
+install.packages("pacman")         # Install pacman package
+
+library("pacman")
+
+Step 2 : import multiple packages
+p_load(ggplot2, dplyr, stringr)
+
+Step 3:  unload packages 
+p_unload(ggplot2, dplyr, stringr) 
+
+Step 4 : Update packages  
+p_update(update = FALSE)
+
